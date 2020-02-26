@@ -51,7 +51,7 @@ var SocketProvider = function SocketProvider(_ref) {
       _ref$initialState = _ref.initialState,
       initialState = _ref$initialState === void 0 ? {} : _ref$initialState;
 
-  var _useState = useState(),
+  var _useState = useState({}),
       _useState2 = _slicedToArray(_useState, 2),
       socket = _useState2[0],
       setSocket = _useState2[1];
@@ -88,10 +88,10 @@ var SocketProvider = function SocketProvider(_ref) {
         dispatch(action);
       }
 
-      setSocket(newSocket);
       return emit.apply(void 0, args);
     };
 
+    setSocket(newSocket);
     return function () {
       setSocket(null);
       return newSocket.disconnect();
@@ -114,7 +114,6 @@ var useSocketState = function useSocketState() {
   var _useContext2 = useContext(SocketContext),
       state = _useContext2.state;
 
-  console.log(state);
   return state;
 };
 var useEmitEvent = function useEmitEvent(eventName) {

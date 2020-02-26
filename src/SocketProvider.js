@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 const SocketContext = React.createContext(null);
 
 export const SocketProvider = ({ uri, children, reducer, initialState = {} }) => {
-  const [socket, setSocket] = useState();
+  const [socket, setSocket] = useState({});
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
@@ -19,9 +19,10 @@ export const SocketProvider = ({ uri, children, reducer, initialState = {} }) =>
         dispatch(action);
       }
 
-      setSocket(newSocket);
       return emit(...args);
     };
+
+    setSocket(newSocket);
 
     return () => {
       setSocket(null);
@@ -30,7 +31,7 @@ export const SocketProvider = ({ uri, children, reducer, initialState = {} }) =>
   }, []);
 
   return (
-    <SocketContext.Provider value={{ socket, state }}>
+    <SocketContext.Provider value={{ socket, state, dispatch }}>
       {children}
     </SocketContext.Provider>
   );
@@ -46,7 +47,21 @@ export const useSocketState = () => {
   return state;
 };
 
+export const useSocketSelector = selector => {
+  const state = useSocketState();
+  return selector(state);
+}
+
+export const useEmit = () => {
+  return socket.emit;
+}
+
 export const useEmitEvent = eventName => {
   const socket = useSocket();
   return data => socket.emit(eventName, data);
 };
+
+export const useSocketDispatch = () => {
+  const { dispatch } = useContext(SocketContext);
+  return dispatch;
+}

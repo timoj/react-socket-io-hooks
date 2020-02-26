@@ -48,7 +48,27 @@ This hook returns the current state;
 
 ```js
 export const Counter = () => {
-  const socket = useSocketState();
+  const state = useSocketState();
+}
+```
+
+## useSocketSelector
+
+This hook takes a selector to return selected information from state (like redux).
+
+```js
+export const Counter = () => {
+  const count = useSocketSelector(state => state.count);
+}
+```
+
+## useEmit
+
+This hook returns the emit function to emit a socket event.
+
+```js
+export const Counter = () => {
+  const emit = useEmit();
 }
 ```
 
@@ -62,6 +82,11 @@ export const Counter = () => {
   const emitEvent = useEmitEvent('MY_EVENT');
 }
 ```
+
+## useSocketDispatch
+
+This hook returns a dispatch function which lets you dispatch
+an action to your reducer.
 
 ## Example
 

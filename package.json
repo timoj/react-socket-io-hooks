@@ -1,6 +1,6 @@
 {
   "name": "react-socket-io-hooks",
-  "version": "0.0.4",
+  "version": "0.2.0",
   "description": "",
   "main": "./dist/SocketProvider.js",
   "types": "./index.d.ts",
