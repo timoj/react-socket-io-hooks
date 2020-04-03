@@ -10,6 +10,7 @@
   "main": "./dist/SocketProvider.js",
   "types": "./index.d.ts",
   "scripts": {
+    "prepublish": "npm run build",
     "build": "rollup -c"
   },
   "keywords": [],
