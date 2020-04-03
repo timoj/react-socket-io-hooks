@@ -4,4 +4,8 @@ export function useSocket(): SocketIOClient.Socket;
 
 export function useSocketState(): any
 
+export function useSocketSelector(selector: (state: any) => any): any
+
 export function useEmitEvent(eventName: string)
+
+export function useSocketDispatch(): React.Dispatch

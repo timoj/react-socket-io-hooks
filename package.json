@@ -1,7 +1,12 @@
 {
   "name": "react-socket-io-hooks",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "",
+  "homepage": "https://github.com/alchemycodelab/react-socket-io-hooks",
+  "repository": {
+    "url": "https://github.com/alchemycodelab/react-socket-io-hooks.git",
+    "type": "git"
+  },
   "main": "./dist/SocketProvider.js",
   "types": "./index.d.ts",
   "scripts": {
@@ -17,9 +22,9 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.4",
-    "@babel/preset-env": "^7.8.4",
-    "@babel/preset-react": "^7.8.3",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
     "@rollup/plugin-commonjs": "^11.0.1",
     "@rollup/plugin-node-resolve": "^7.0.0",
     "@types/react": "^16.9.16",
