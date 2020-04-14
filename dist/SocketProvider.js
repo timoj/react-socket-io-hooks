@@ -62,6 +62,8 @@ var SocketProvider = function SocketProvider(_ref) {
   var uri = _ref.uri,
       children = _ref.children,
       reducer = _ref.reducer,
+      _ref$socketOpts = _ref.socketOpts,
+      socketOpts = _ref$socketOpts === void 0 ? {} : _ref$socketOpts,
       _ref$initialState = _ref.initialState,
       initialState = _ref$initialState === void 0 ? {} : _ref$initialState;
 
@@ -76,7 +78,7 @@ var SocketProvider = function SocketProvider(_ref) {
       dispatch = _useReducer2[1];
 
   useEffect(function () {
-    var newSocket = io.connect(uri);
+    var newSocket = io.connect(uri, socketOpts);
     var emit = newSocket.io.emit.bind(newSocket.io);
 
     newSocket.io.emit = function () {

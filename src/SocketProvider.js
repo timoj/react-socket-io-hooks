@@ -3,12 +3,12 @@ import io from 'socket.io-client';
 
 const SocketContext = React.createContext(null);
 
-export const SocketProvider = ({ uri, children, reducer, initialState = {} }) => {
+export const SocketProvider = ({ uri, children, reducer, socketOpts = {}, initialState = {} }) => {
   const [socket, setSocket] = useState({});
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const newSocket = io.connect(uri);
+    const newSocket = io.connect(uri, socketOpts);
     const emit = newSocket.io.emit.bind(newSocket.io);
     newSocket.io.emit = function (...args) {
       const [eventType, event] = args;
